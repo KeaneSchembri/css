@@ -1,0 +1,43 @@
+<div class="row mt-5">
+    <div class="col-sm-12">
+        <h5>Property List</h5>
+    </div>
+</div>
+
+<div class="row mt-5">
+        <div class="col-sm-6">
+            <label for="txtPriceFrom">Price From:</label>
+            <input class="form-control" id="txtPriceFrom" type="number" [(ngModel)] = "priceFromFilter" />
+        </div>
+        <div class="col-sm-6">
+            <label for="txtPriceTo">Price To:</label>
+            <input class="form-control" id="txtPriceTo" type="number" [(ngModel)] = "priceToFilter"/>
+        </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-sm-12">
+        <table class="table">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Asking Price</th>
+                <th>Completion Date</th>
+                <th>Number of Bedrooms</th>
+                <th>Area</th>
+                <th><button type="submit" class="btn btn-primary" (click)="handleAddButtonClickedEvent()">Add</button></th>
+            </tr>
+            <tr *ngFor="let p of this.filteredPropertyData">
+                <td>{{p.id}}</td>
+                <td>{{p.name}}</td>
+                <td>{{p.type}}</td>
+                <td>{{p.askingPrice | currency:'EUR'}}</td>
+                <td>{{p.dateToBeCompleted | date: 'longDate'}}</td>
+                <td>{{p.numberOfBedrooms}}</td>
+                <td>{{p.area}} m sq</td>
+                <td><img [src]="p.image" [name]="p.name"/></td>
+            </tr>
+        </table>
+    </div>
+</div>
