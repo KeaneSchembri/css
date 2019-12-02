@@ -1,0 +1,10 @@
+<p>{{birthdayDate}}</p>
+
+<p>{{birthdayDate | date:'dd/MM/yyyy'}}</p>
+<p>{{birthdayDate | date:'mediumDate'}}</p>
+
+<br/>
+
+<p>{{birthdayDate | date: dateFormat}}</p>
+
+<button class="btn btn-primary" (click)="handleToggleDateFormatButtonClickedEvent()">Toggle Date Format</button>

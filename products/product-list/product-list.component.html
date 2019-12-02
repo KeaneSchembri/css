@@ -1,0 +1,61 @@
+<div class="card">
+    <h5 class="card-header bg-primary text-white">{{cardTitle}}</h5>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-sm-12">
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="txtFilter">Filter:</label>
+                            <input id="txtFilter" type="text" class="form-control" [(ngModel)] = "productListFilter">
+                        </div>
+
+                        <div>
+                            Filter: {{productListFilter}}
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- <div class="table-responsive" *ngIf="productData != null && productData.length > 0"> -->
+                <div class="table-responsive" *ngIf="isTableVisible()">
+                    <table class="table">
+                        <thead>
+                            <th *ngIf="isImageColumnVisible == true">Image</th>
+                            <th>Code</th>
+                            <th>Name</th>
+                            <th>Availability</th>
+                            <th>Price</th>
+                            <th>5 Star Rating</th>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let product of filteredProductData">
+                                <td *ngIf="isImageColumnVisible == true">
+                                    <img [src]="product.imageUrl" [title]="product.productName | uppercase" [width]="productImageWidth" [height]="productImageHeight">
+                                </td>
+                                <td>{{product.productCode | convertToSpaces:'-'}}</td>
+                                <td>{{product.productName}}</td>
+                                <td>{{product.releaseDate}}</td>
+                                <td>{{product.price | currency:'EUR':true:'1.2-2'}}</td>
+                                <td>{{product.starRating}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- <div class="alert alert-warning" *ngIf="productData == null || productData.length == 0"></div> -->
+                <div class="alert alert-warning" *ngIf="!isTableVisible()">
+                    There are no products to show
+                </div>
+
+                <div>
+                    <button class="btn btn-primary" (click)="handleToggleImageButtonClickedEvent()">Toggle Image Column</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<pmapp-birthday></pmapp-birthday>
