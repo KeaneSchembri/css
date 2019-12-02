@@ -1,0 +1,34 @@
+<br>
+<hr>
+<h4 class="header">{{title}}</h4>
+<div class="col-sm-6">
+    Seach for Name:
+    <input class="form-control" type="text" [(ngModel)]="FilterClassMates">
+    <br>
+</div>
+
+<div class="col-sm-6">
+    Seach for ID:
+    <input class="form-control" type="number" [(ngModel)]="FilterClassMatesID">
+    <br>
+</div>
+
+<div class="col-sm-6">
+        Seach for Surname:
+        <input class="form-control" type="text" [(ngModel)]="FilterSurname">
+        <br>
+    </div>
+
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Surname</th>
+    </tr>
+    <tr *ngFor="let students of filteredStudentsData">
+        <td>{{students.id}}</td>
+        <td>{{students.name}}</td>
+        <td>{{students.surname}}</td>
+    </tr>
+</table>
+<app-santa></app-santa>
